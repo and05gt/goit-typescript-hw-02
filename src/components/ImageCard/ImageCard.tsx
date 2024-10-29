@@ -1,6 +1,12 @@
+import { Image } from "../App/App.types";
 import style from "./ImageCard.module.css";
 
-const ImageCard = ({ image, openModal }) => {
+type Props = {
+  image: Image;
+  openModal: (image: Image) => void;
+};
+
+const ImageCard = ({ image, openModal }: Props) => {
   const { urls, alt_description } = image;
 
   return (

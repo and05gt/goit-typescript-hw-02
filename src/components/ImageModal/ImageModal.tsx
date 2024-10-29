@@ -1,7 +1,14 @@
 import ReactModal from "react-modal";
+import { Image } from "../App/App.types";
 ReactModal.setAppElement("#root");
 
-const ImageModal = ({ isOpen, closeModal, image }) => {
+type Props = {
+  isOpen: boolean;
+  image: Image | null;
+  closeModal: () => void;
+};
+
+const ImageModal = ({ isOpen, closeModal, image }: Props) => {
   if (!image) return;
 
   const { urls, alt_description } = image;
