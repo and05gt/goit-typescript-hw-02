@@ -1,0 +1,8 @@
+.imgWrapper {
+  overflow: hidden;
+}
+
+.imgCard {
+  width: 340px;
+  height: 260px;
+}
