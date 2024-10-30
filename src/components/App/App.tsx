@@ -7,13 +7,7 @@ import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import { fetchImages } from "../../services/api";
-import { Image } from "./App.types";
-
-interface ImageData {
-  total_pages: number;
-  totalPages: number;
-  results: Image[];
-}
+import { Image } from "../types";
 
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -30,12 +24,12 @@ const App = () => {
       return;
     }
 
-    const getData = async (): Promise<void> => {
+    const getData = async () => {
       try {
         setIsError(false);
         setIsLoading(true);
-        const data: ImageData = await fetchImages(query, page);
-        setImages((prev: Image[]): Image[] => [...prev, ...data.results]);
+        const data = await fetchImages(query, page);
+        setImages((prev) => [...prev, ...data.results]);
         setTotalPages(data.total_pages);
       } catch {
         setIsError(true);
@@ -69,8 +63,12 @@ const App = () => {
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
-      {images.length > 0 && (
+      {images.length > 0 ? (
         <ImageGallery images={images} openModal={openModal} />
+      ) : (
+        <h1 className="titleApp">
+          Application for searching and displaying images
+        </h1>
       )}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}

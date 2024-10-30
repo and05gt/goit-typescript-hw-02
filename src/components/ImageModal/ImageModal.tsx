@@ -1,17 +1,19 @@
 import ReactModal from "react-modal";
-import { Image } from "../App/App.types";
+import { Image } from "../types";
+import style from "./ImageModal.module.css";
+import { BiLike } from "react-icons/bi";
 ReactModal.setAppElement("#root");
 
-type Props = {
+interface Props {
   isOpen: boolean;
   image: Image | null;
   closeModal: () => void;
-};
+}
 
 const ImageModal = ({ isOpen, closeModal, image }: Props) => {
   if (!image) return;
 
-  const { urls, alt_description } = image;
+  const { urls, alt_description, likes } = image;
 
   const customStyles = {
     content: {
@@ -23,7 +25,7 @@ const ImageModal = ({ isOpen, closeModal, image }: Props) => {
       transform: "translate(-50%, -50%)",
       padding: 0,
       border: "none",
-      height: "680px",
+      outline: "none",
     },
     overlay: {
       backgroundColor: "rgba(46, 47, 66, 0.80)",
@@ -41,7 +43,18 @@ const ImageModal = ({ isOpen, closeModal, image }: Props) => {
         onRequestClose={closeModal}
         contentLabel="Image Modal"
       >
-        <img src={urls.regular} alt={alt_description} />
+        <div className={style.modalWrapper}>
+          <img
+            className={style.modalImage}
+            src={urls.regular}
+            alt={alt_description}
+          />
+          <div className={style.modalImageInfo}>
+            <p className={style.modalInfoLikes}>
+              <BiLike /> {likes}
+            </p>
+          </div>
+        </div>
       </ReactModal>
     </div>
   );

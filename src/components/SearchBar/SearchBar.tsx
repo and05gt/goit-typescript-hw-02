@@ -3,9 +3,9 @@ import { GoSearch } from "react-icons/go";
 import style from "./SearchBar.module.css";
 import { FormEvent, useRef } from "react";
 
-type Props = {
+interface Props {
   onSubmit: (value: string) => void;
-};
+}
 
 const SearchBar = ({ onSubmit }: Props) => {
   const inputRef = useRef<HTMLInputElement | null>(null);

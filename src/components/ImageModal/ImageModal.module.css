@@ -1,0 +1,19 @@
+.modalWrapper {
+  position: relative;
+  height: 680px;
+}
+
+.modalImageInfo {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 16px 32px;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.modalInfoLikes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

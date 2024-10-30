@@ -1,8 +1,8 @@
 import style from "./LoadMoreBtn.module.css";
 
-type Props = {
+interface Props {
   onClick: () => void;
-};
+}
 
 const LoadMoreBtn = ({ onClick }: Props) => {
   return (
