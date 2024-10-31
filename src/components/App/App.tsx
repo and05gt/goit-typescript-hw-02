@@ -8,6 +8,7 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import { fetchImages } from "../../services/api";
 import { Image } from "../types";
+import Hero from "../Hero/Hero";
 
 const App = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -69,9 +70,7 @@ const App = () => {
       {images.length > 0 ? (
         <ImageGallery images={images} openModal={openModal} />
       ) : (
-        <h1 className="titleApp">
-          Application for searching and displaying images
-        </h1>
+        <Hero />
       )}
       {isLoading && <Loader />}
       {page < totalPages && <LoadMoreBtn onClick={handleChangePage} />}

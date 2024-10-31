@@ -2,16 +2,3 @@
   max-width: 1440px;
   margin: 0 auto;
 }
-
-.titleApp {
-  display: block;
-  max-width: 696px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 56px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.07;
-  letter-spacing: 1.12px;
-  padding: 188px 0 292px 0;
-}
