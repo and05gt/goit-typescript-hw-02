@@ -9,7 +9,6 @@ export interface Image {
 }
 
 export interface ImageData {
-  total_pages: number;
-  totalPages: number;
   results: Image[];
+  total_pages: number;
 }

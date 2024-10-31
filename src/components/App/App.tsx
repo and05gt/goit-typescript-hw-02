@@ -29,8 +29,10 @@ const App = () => {
         setIsError(false);
         setIsLoading(true);
         const data = await fetchImages(query, page);
-        setImages((prev) => [...prev, ...data.results]);
-        setTotalPages(data.total_pages);
+        if (data) {
+          setImages((prev) => [...prev, ...data.results]);
+          setTotalPages(data.total_pages);
+        }
       } catch {
         setIsError(true);
       } finally {
@@ -63,6 +65,7 @@ const App = () => {
   return (
     <>
       <SearchBar onSubmit={handleSearch} />
+      {isError && <ErrorMessage />}
       {images.length > 0 ? (
         <ImageGallery images={images} openModal={openModal} />
       ) : (
@@ -71,7 +74,6 @@ const App = () => {
         </h1>
       )}
       {isLoading && <Loader />}
-      {isError && <ErrorMessage />}
       {page < totalPages && <LoadMoreBtn onClick={handleChangePage} />}
       <ImageModal
         isOpen={isOpen}
